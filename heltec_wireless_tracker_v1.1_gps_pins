@@ -1,0 +1,33 @@
+=======================================================
+Date: 12/4/2024
+Meshtastic Version: 2.5.14.
+=======================================================
+
+The Heltec Wireless Tracker v 1.1 has an on-board GPS unit.
+
+The serial output of the tracker can be read using an ESP8266 (or other device) by connecting:
+
+HELTEC PIN      ESP8266 PIN
+----------      -----------
+GND             GND
+33              TX
+
+The baud rate appears to be 115200 bps.
+
+You can also exfiltrate NMEA data using the "Serial" module in Meshtastic itself, but this is a more direct way that also frees up the Serial module for other purposes, i.e. LoRA.
+
+The raw NMEA stream can be fed to another ESP/MCU for processing, storage, etc.
+
+Note that this only works when the unit is not sleeping.
+
+Also, when the GPS wakes up, you will get some lines that aren't valid NMEA, for example:
+
+UC6580I G1B1L1E1 COM1
+PN 2400615000268
+SN 20230727010355006
+HWVer 00
+FWVer R6.0.0.0Build3700
+Copyright (c), Unicore Communications Inc.
+All rights reserved.
+
+This could perhaps be watched for as an indication that the tracker has come out of sleep, and might be used to initiate whatever "on state" routine would be appropriate, for example, pushing a message through the Meshtastic LoRAWAN network.
