@@ -2,4 +2,6 @@ In client mode, using 3000 mAh LiPo battery, the Wireless tracker lasted about 3
 
 In tracker mode, using power saving suggestions on Heltec forums, battery percentage seems to be decreasing somewhat less than 1 percent per hour. So far it has been running for 34 hours and has decreased from 93 to 73 percent battery. This would imply a battery cycle lenght of somewhere in the ballpark of 6 to 7 days (conservatively estimate 5 days).
 
-Even if the battery is used to power other devices/peripherals it seems like a 24 hour lifespan is feasible; obviously more would be possible with a bigger battery.
+Even if the battery is used to power other devices/peripherals it seems like a 24 hour lifespan is easily feasible; obviously more would be possible with a bigger battery and/or solar panels to top-off the battery.
+
+Batteries being used: https://www.amazon.com/dp/B0DK5BBKM5?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1
