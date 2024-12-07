@@ -1,0 +1,72 @@
+---------------------------------------
+Si5351 Clock Generator / HF Transmitter
+---------------------------------------
+
+1. Needs 3-5v supply.
+2. I2C Bus for Communication, Address 0x60
+3. Needs LPF or BPF on each output (3rd order may be sufficient)
+4. 25 MHz crystal may not be suitable for WSPR on frequencies about about 10 MHz due to drift; will be temperature sensitive unless replaced with TCXO.
+5. 27 MHz crystal required for WSPR on 2 Meters because 25 MHz crystal has problems generating multiples that can divide properly.
+
+------------------------------
+GY-85 BMP085 9 axis IMU
+HMC5883L, ITG3205 and ADXL345
+------------------------------
+
+1. 3-5V supply, connect power bus to "3.3 V" pin for I2C
+2. I2C bus, each chip has different address
+ADXL345 -  0x53 — Three axis acceleration 
+ITG3205  - 0x69 — Three axis gyroscope
+HMC5883L - 0x1E — Three axis magnetic field
+3. For more info see: https://medium.com/jungletronics/gy-85-a-quick-datasheet-study-79019bb36fbf
+
+-------------------------------------
+GY-521 6 axis Accelerometer/Gyroscope
+-------------------------------------
+1. 3-5V supply
+2. I2C bus, 0x68 (or 0x69 if address is set high)
+3. XDA and XCL pins for connecting additional sensors (bus extensions)
+4. For more info see: https://mschoeffler.com/2017/10/05/tutorial-how-to-use-the-gy-521-module-mpu-6050-breakout-board-with-the-arduino-uno/
+
+-------------------------------------
+GY-273 Magnetometer
+-------------------------------------
+1. 3-5V supply
+2. I2C bus, pull up resistors provided
+3. Uses HMC5883L or possibly QMC5883 -- address depends on this -- HMC is considered better but both work
+4. Address will be 0x1E for HMC5883L or 0x0D for the "fake" chip (QMC variant, made of chinesium)
+
+------------------------------------------------
+INA3221 3-Channel Current/Voltage Monitor Sensor
+------------------------------------------------
+1. 3-5V supply
+2. Measures voltage on bus and across shunt resistors (to allow calculation of current); measures voltage 0-26V and current up to 1.6 Amps; all 3 channels share ground so must be on same power supply.
+3. I2C bus (0x40, or 0x41,0x42,0x43 if A0 is connected to another pin (VS, SDA, SCL)
+
+-----------------------------
+GY-302 Light Intensity Sensor
+------------------------------
+1. 3-5V supply
+2. I2C bus, 0x23 (or 0x5c if address pin pulled up)
+3. BH1750FVI sensor; peak response is to 500-650 nm light (visible light, particularly green-orange), particularly 575 nm (yellow light)
+
+--------------------------------------------------------
+BMP280 + AHT20 Pressure, Temperature and Humidity Sensor
+--------------------------------------------------------
+1. 3.3V supply bus
+2. I2C bus, 0x38 for humidity / 0x76 or 0x77 for temperature/pressure
+
+--------------------------------------------------------
+BMP280 Pressure and Temperature Sensor
+--------------------------------------------------------
+1. 3.3V supply bus
+2. I2C bus, 0x76 (SDO to ground) or 0x77 (SDO high)
+3. Does not measure humidity
+
+------------------------
+GUVA-S12SD Analog Sensor
+------------------------
+1. 3-5 V supply
+2. Analog device, needs to be read using ESP32 DAC or external DAC. 
+3. From AdaFruit: "To use, power the sensor and op-amp by connecting V+ to 2.7-5.5VDC and GND to power ground. Then read the analog signal from the OUT pin. The output voltage is: Vo = 4.3 * Diode-Current-in-uA. So if the photocurrent is 1uA (9 mW/cm^2), the output voltage is 4.3V. You can also convert the voltage to UV Index by dividing the output voltage by 0.1V. So if the output voltage is 0.5V, the UV Index is about 5."
+4. Sensitive to 240nm - 370nm UVA/UVB
