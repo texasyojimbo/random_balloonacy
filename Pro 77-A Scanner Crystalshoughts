@@ -1,0 +1,30 @@
+1. The Realistic PRO-77A was a VHF Hi/Lo Scanner manufactured in the late 1970s or early 1980s. It has 8 crystal-controlled frequencies.
+
+2. The IFs are 10.7 MHz and 455 kHz. There is a 10.245 MHz crystal soldered onto a daughter board, presumably for 1st IF mixing.
+
+3. The crystals are labeled with a frequency that is "user-friendly" but technically inaccurate insofar as the actual frequency is concerned. They are labeled "about" 10.7 MHz higher (in the case of Hi band, 148 to 174 MHz) or 10.7 MHz lower (in the case of Lo band, 30-50 MHz).
+
+4. For example, these are some crystals were in the unit I bought at a hamfest many years ago:
+
+Crystal frequency on label                Actual resonant frequency as measured by NanoVNA
+==========================                ================================================
+154.755                                   144.007 MHz (should be 144.055?)
+155.37                                    144.613 MHz (should be 144.670?)
+
+It is possible measurement error or insufficient capacitance explains the incorrect readings. It is possible the crystals can be pulled one way or the other.
+
+5. These crystals (listed here by label) appear to have actual frequencies inside the 2 meter ham band: 156.000 (about 145.3), 154.755, 155.37, 155.43 (about 144.73 MHz). These crystals seem to have real resonances elsewhere (by label: 37.26, 159.405, 154.115).
+
+6. There was also a crystal that appears to have an actual resonant frequency around 53.8 MHz in the 6 meter band, but the frequency printed on the crystal seems to be missing or worn off.
+
+7. There were also some crystals that were a bit outside the ham bands.
+
+8. Anyone re-crystalling a vintage scanner should be aware of the 10.7 MHz offsets and also possibility that the crystals might be "off" frequency unless the scanner properly loads them.
+
+9. These crystals are also presumably operating on an overtone mode. For example, the unlabeled "53.8-something" crystal appears to have a fundamental at about 17.85 MHz; I believe it is probably running on 3rd Overtone for VHF-Lo. The crystal labeled 154.755 seems to have a fundamental around 16.050 MHz (it shouldbe 16.007 MHz; this may again be measurement error), and I suspect that the VHF-Hi are running on the 9th Overtone.
+The crystal labeled as 159.405 seems to have a fundamental at about 16.5 MHz, which roughly fits (16.5 * 9 + 10.7 = 159.2). It would seem that a 15 MHz crystal will likely result in receiving a signal around 145.7 MHz.
+
+10. Some possibly modifications for an old scanner like this:
+
+* Replace the antenna connector with a modern alternative such as SO-239 (UHF), BNC, or SMA.
+* Replace the crystals with a DDS board, such as a Si5351.
